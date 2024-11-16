@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>View Attendance</title>
+    <link rel="stylesheet" href="/public/styles.css">
+</head>
+<body>
+
+<header>
+    <h1>View Attendance</h1>
+    <a href="/" class="home-button">Home</a>
+</header>
+
+<div class="container">
+    <!-- Attendance Filter Form -->
+    <form method="GET" action="/viewAttendance">
+        <label for="subject">Select Subject:</label>
+        <select name="subjectId" id="subject">
+            <option value="">Select Subject</option>
+            <% subjects.forEach(subject => { %>
+                <option value="<%= subject._id %>" <%= subject._id === subjectId ? 'selected' : '' %>><%= subject.subjectName %></option>
+            <% }) %>
+        </select>
+
+        <label for="date">Select Date:</label>
+        <input type="date" name="date" id="date" value="<%= date || '' %>">
+
+        <button type="submit">Filter</button>
+    </form>
+
+    <!-- Display Attendance Records -->
+    <% if (attendanceRecords.length > 0) { %>
+        <table class="attendance-table">
+            <thead>
+                <tr>
+                    <th>Student Name</th>
+                    <th>Roll No</th>
+                    <th>Status</th>
+                    <th>Action</th>
+                </tr>
+            </thead>
+            <tbody>
+                <% attendanceRecords.forEach(record => { %>
+                    <tr>
+                        <td><%= record.student.name %></td>
+                        <td><%= record.student.rollNo %></td>
+                        <td><%= record.status %></td>
+                        <td>
+                            <!-- Delete Button -->
+                            <form action="/deleteAttendance/<%= record._id %>" method="POST" style="display:inline;">
+                                <button type="submit" class="delete-btn">Delete</button>
+                            </form>
+                        </td>
+                    </tr>
+                <% }) %>
+            </tbody>
+        </table>
+    <% } else { %>
+        <p class="no-data">No attendance records found for this filter.</p>
+    <% } %>
+</div>
+<script src="/js/script.js"></script>
+
+</body>
+</html>

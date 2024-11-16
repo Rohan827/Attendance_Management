@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mark Attendance</title>
+    <link rel="stylesheet" href="/css/styles.css"> 
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+
+<div class="container">
+    <h2>Mark Attendance</h2>
+
+    <!-- Success or error message -->
+    <% if (successMessage) { %>
+        <div class="success-message"><%= successMessage %></div>
+    <% } %>
+
+    <!-- Attendance Form -->
+    <form action="/markAttendance" method="POST">
+        <label for="studentId">Student:</label>
+        <select name="studentId" id="studentId" required>
+            <% students.forEach(student => { %>
+                <option value="<%= student._id %>"><%= student.name %> - <%= student.rollNo %></option>
+            <% }) %>
+        </select>
+
+        <label for="subjectId">Subject:</label>
+        <select name="subjectId" id="subjectId" required>
+            <% subjects.forEach(subject => { %>
+                <option value="<%= subject._id %>"><%= subject.subjectName %></option>
+            <% }) %>
+        </select>
+
+        <label for="status">Status:</label>
+        <select name="status" id="status" required>
+            <option value="Present">Present</option>
+            <option value="Absent">Absent</option>
+        </select>
+
+        <label for="date">Date:</label>
+        <input type="date" name="date" id="date" required>
+
+        <button type="submit">Mark Attendance</button>
+    </form>
+
+    <br><br>
+
+    <!-- Home Button -->
+    <a href="/" class="home-button">Home</a>
+
+</div>
+<script src="/js/script.js"></script>
+
+</body>
+</html>

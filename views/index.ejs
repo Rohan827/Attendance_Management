@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Attendance Management System</title>
+<link rel="stylesheet" href="/public/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css" rel="stylesheet">
+    
+</head>
+<body>
+    <header>
+        <div class="header-content">
+            <h1>Attendance Management System</h1>
+            <nav>
+                <ul>
+                    <li><a href="/">Home</a></li>
+                    <!-- Optional: You can remove the header links if you prefer the cards to handle navigation -->
+                     <li><a href="/registerStudent">Register Student</a></li>
+                    <li><a href="/registerSubject">Register Subject</a></li>
+                    <li><a href="/markAttendance">Mark Attendance</a></li> 
+                    <li><a href="/viewAttendance">View Attendance</a></li> 
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <section class="intro-section">
+            <h2>Welcome to the Attendance Management System</h2>
+            <p>Efficiently manage student attendance and monitor progress across different subjects!</p>
+            <p>Click the options below to get started.</p>
+        </section>
+
+        <section class="features">
+            <!-- Register Student Card -->
+            <a href="/registerStudent" class="feature-box">
+                <h3>Register Students</h3>
+                <p>Keep track of all students in the system.</p>
+            </a>
+
+            <!-- Register Subject Card -->
+            <a href="/registerSubject" class="feature-box">
+                <h3>Register Subjects</h3>
+                <p>Assign and manage subjects.</p>
+            </a>
+
+            <!-- Mark Attendance Card -->
+            <a href="/markAttendance" class="feature-box">
+                <h3>Mark Attendance</h3>
+                <p>Record attendance for each student and subject.</p>
+            </a>
+            
+                <a href="/viewAttendance" class="feature-box">
+                    <h3>View Attendance</h3>
+                    <p>See the attendance history for students.</p>
+                </a>
+    
+            
+        </section>
+    </main>
+    <script src="/js/script.js"></script>
+
+    <footer>
+        <p>&copy; 2024 Attendance Management System. All rights reserved.</p>
+    </footer>
+</body>
+</html>
